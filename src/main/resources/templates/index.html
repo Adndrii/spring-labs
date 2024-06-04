@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home Page</title>
+</head>
+<body>
+<h1 th:text="${message}">This is the home page</h1>
+
+<h2>DOTA 2 HEROES:</h2>
+<ul>
+    <li th:each="item : ${items}" th:text="${item}"></li>
+</ul>
+</body>
+</html>
