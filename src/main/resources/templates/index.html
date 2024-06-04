@@ -1,14 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home Page</title>
+    <title th:text="${title}">Dota 2 Page</title>
 </head>
 <body>
-<h1 th:text="${message}">This is the home page</h1>
+<h1 th:text="${title}">Dota 2 Page</h1>
+<h2 th:text="${subtitle}">Subtitle</h2>
 
-<h2>DOTA 2 HEROES:</h2>
+<p th:text="${localizedText}">Welcome text</p>
+
+<h3>Hero Roles</h3>
 <ul>
-    <li th:each="item : ${items}" th:text="${item}"></li>
+    <li th:each="hero, role : ${heroRoles}">
+        <span th:text="${hero}">Hero</span> - <span th:text="${role}">Role</span>
+    </li>
 </ul>
+
+<h3>Top Heroes</h3>
+<ul>
+    <li th:each="hero : ${heroes}" th:text="${hero}">Hero</li>
+</ul>
+
+<h3>Selected Hero</h3>
+<p th:text="${selectedHero}">Selected Hero</p>
+
+<h3>Hero Link</h3>
+<a th:href="${heroLink}" target="_blank">More about Invoker</a>
+
+<h3>Hero Quote</h3>
+<p th:utext="'Quote: ' + ${heroQuote}">Hero Quote</p>
+
+<div th:if="${showSpecialMessage}">
+    <p>Special Message: Double Damage Rune has spawned!</p>
+</div>
+
+<!-- Attributes -->
+<h3 th:text="${title}">Dota 2 Page</h3>
+
+<p th:id="'hero-' + ${selectedHero}">This is an ID attribute example</p>
+
+<div th:if="${showSpecialMessage}">
+    <p th:text="'Special message: ' + ${localizedText}">Conditional Text</p>
+</div>
+<div th:unless="${showSpecialMessage}">
+    <p>No special message at this time.</p>
+</div>
+
+<h3>Iterating through Heroes</h3>
+<ul>
+    <li th:each="hero : ${heroes}" th:text="${hero}">Hero</li>
+</ul>
+
+<h3>Preprocessed Data</h3>
+<p th:utext="'<b>' + ${title} + '</b>'">Title</p>
+
 </body>
 </html>
+
